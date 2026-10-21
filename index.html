@@ -1,241 +1,218 @@
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-<title>index.html</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #d5b778;}
-.s1 { color: #bcbec4;}
-.s2 { color: #bababa;}
-.s3 { color: #6aab73;}
-.s4 { color: #56a8f5;}
-.s5 { color: #cf8e6d;}
-.s6 { color: #2aacb8;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>С Днём Рождения, Захар!</title>
+<style>
+  :root{
+    --bg1:#FFE9A8;
+    --bg2:#FFB7C5;
+    --road:#2E4057;
+    --cover1:#3E8EDE;
+    --cover2:#1B2A4A;
+    --inside:#FFF9F0;
+    --ink:#1B2A4A;
+    --accent:#FF6F91;
+    --leaf:#4FAE6B;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg1:#2a2140;
+      --bg2:#4a2a46;
+      --inside:#22201c;
+      --ink:#FFF4E6;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(160deg,var(--bg1),var(--bg2));
+    font-family: ui-rounded, "Segoe UI Rounded", system-ui, -apple-system, sans-serif;
+    color:var(--ink);
+    padding:
+      calc(24px + env(safe-area-inset-top,0px))
+      16px
+      calc(24px + env(safe-area-inset-bottom,0px));
+    overflow-x:hidden;
+  }
+  .scene{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+  .card{
+    position:relative;
+    width:min(88vw, 360px);
+    aspect-ratio:3/4;
+    perspective:1400px;
+    cursor:pointer;
+  }
+  .inside{
+    position:absolute;
+    inset:0;
+    border-radius:22px;
+    background:var(--inside);
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:26px 20px;
+    overflow:hidden;
+  }
+  .inside h1{
+    font-size:1.5rem;
+    line-height:1.25;
+    margin:0 0 10px;
+  }
+  .inside p{
+    font-size:1rem;
+    line-height:1.5;
+    margin:0;
+    max-width:26ch;
+  }
+  .emoji-row{
+    font-size:1.6rem;
+    margin:14px 0;
+    letter-spacing:4px;
+  }
+  .door{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:50%;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 14px, transparent 14px 28px),
+      linear-gradient(200deg,var(--cover1),var(--cover2));
+    transition:transform .9s cubic-bezier(.4,0,.2,1);
+    backface-visibility:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .door-left{left:0; transform-origin:left center; border-radius:22px 0 0 22px;}
+  .door-right{right:0; transform-origin:right center; border-radius:0 22px 22px 0;}
+  .road{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:30%;
+    background:var(--road);
+  }
+  .road::before{
+    content:"";
+    position:absolute;
+    top:50%; left:0; right:0;
+    height:4px;
+    background:repeating-linear-gradient(90deg,#fff 0 16px, transparent 16px 30px);
+    transform:translateY(-50%);
+  }
+  .car{
+    position:absolute;
+    bottom:8%;
+    font-size:2rem;
+    animation:drive 3.2s ease-in-out infinite;
+  }
+  .door-left .car{animation-direction:normal;}
+  .door-right .car{animation-direction:reverse;}
+  @keyframes drive{
+    0%,100%{transform:translateX(-6px);}
+    50%{transform:translateX(10px);}
+  }
+  .flowers{
+    position:absolute;
+    bottom:30%;
+    left:0; right:0;
+    font-size:1.3rem;
+    display:flex;
+    justify-content:space-evenly;
+  }
+  .hearts span{
+    position:absolute;
+    font-size:1.4rem;
+    animation:float 4s ease-in-out infinite;
+    opacity:.9;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+  }
+  .cover-title{
+    position:absolute;
+    top:14%;
+    left:0; right:0;
+    text-align:center;
+    color:#fff;
+    font-weight:700;
+    font-size:1.05rem;
+    text-shadow:0 2px 6px rgba(0,0,0,.35);
+    padding:0 8px;
+  }
+  .card.open .door-left{transform:rotateY(-112deg);}
+  .card.open .door-right{transform:rotateY(112deg);}
+  .hint{
+    font-size:.95rem;
+    opacity:.75;
+    margin:0;
+    text-align:center;
+  }
 </style>
 </head>
-<body bgcolor="#191a1c">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-index.html</font>
-</center></td></tr></table>
-<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
-<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;ru&quot;</span><span class="s0">&gt;</span>
-<span class="s0">&lt;head&gt;</span>
-  <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
-  <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;</span><span class="s0">&gt;</span>
-  <span class="s0">&lt;title&gt;</span><span class="s1">С Днём Рождения, Захар!</span><span class="s0">&lt;/title&gt;</span>
-  <span class="s0">&lt;style&gt;</span>
-    <span class="s1">:</span><span class="s0">root</span><span class="s1">{</span>
-      <span class="s2">--bg1</span><span class="s1">:</span><span class="s4">#FFE9A8</span><span class="s1">;</span>
-      <span class="s2">--bg2</span><span class="s1">:</span><span class="s4">#FFB7C5</span><span class="s1">;</span>
-      <span class="s2">--road</span><span class="s1">:</span><span class="s4">#2E4057</span><span class="s1">;</span>
-      <span class="s2">--cover1</span><span class="s1">:</span><span class="s4">#3E8EDE</span><span class="s1">;</span>
-      <span class="s2">--cover2</span><span class="s1">:</span><span class="s4">#1B2A4A</span><span class="s1">;</span>
-      <span class="s2">--inside</span><span class="s1">:</span><span class="s4">#FFF9F0</span><span class="s1">;</span>
-      <span class="s2">--ink</span><span class="s1">:</span><span class="s4">#1B2A4A</span><span class="s1">;</span>
-      <span class="s2">--accent</span><span class="s1">:</span><span class="s4">#FF6F91</span><span class="s1">;</span>
-      <span class="s2">--leaf</span><span class="s1">:</span><span class="s4">#4FAE6B</span><span class="s1">;</span>
-      <span class="s2">color-scheme</span><span class="s1">: </span><span class="s3">light dark</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s5">@media </span><span class="s1">(</span><span class="s2">prefers-color-scheme</span><span class="s1">: </span><span class="s3">dark</span><span class="s1">){</span>
-      <span class="s1">:</span><span class="s0">root</span><span class="s1">{</span>
-        <span class="s2">--bg1</span><span class="s1">:</span><span class="s4">#2a2140</span><span class="s1">;</span>
-        <span class="s2">--bg2</span><span class="s1">:</span><span class="s4">#4a2a46</span><span class="s1">;</span>
-        <span class="s2">--inside</span><span class="s1">:</span><span class="s4">#22201c</span><span class="s1">;</span>
-        <span class="s2">--ink</span><span class="s1">:</span><span class="s4">#FFF4E6</span><span class="s1">;</span>
-      <span class="s1">}</span>
-    <span class="s1">}</span>
-    <span class="s0">*</span><span class="s1">{</span><span class="s2">box-sizing</span><span class="s1">:</span><span class="s3">border-box</span><span class="s1">;}</span>
-    <span class="s0">html</span><span class="s1">,</span><span class="s0">body</span><span class="s1">{</span><span class="s2">height</span><span class="s1">:</span><span class="s6">100</span><span class="s1">%;}</span>
-    <span class="s0">body</span><span class="s1">{</span>
-      <span class="s2">margin</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">min-height</span><span class="s1">:</span><span class="s6">100</span><span class="s1">%;</span>
-      <span class="s2">display</span><span class="s1">:</span><span class="s3">flex</span><span class="s1">;</span>
-      <span class="s2">align-items</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">justify-content</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">background</span><span class="s1">:</span><span class="s0">linear-gradient</span><span class="s1">(</span><span class="s6">160</span><span class="s3">deg</span><span class="s1">,</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--bg1</span><span class="s1">),</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--bg2</span><span class="s1">));</span>
-      <span class="s2">font-family</span><span class="s1">: </span><span class="s3">ui-rounded</span><span class="s1">, </span><span class="s3">&quot;Segoe UI Rounded&quot;</span><span class="s1">, </span><span class="s3">system-ui</span><span class="s1">, </span><span class="s3">-apple-system</span><span class="s1">, </span><span class="s3">sans-serif</span><span class="s1">;</span>
-      <span class="s2">color</span><span class="s1">:</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--ink</span><span class="s1">);</span>
-      <span class="s2">padding</span><span class="s1">:</span>
-        <span class="s0">calc</span><span class="s1">(</span><span class="s6">24</span><span class="s3">px </span><span class="s1">+ </span><span class="s0">env</span><span class="s1">(</span><span class="s3">safe-area-inset-top</span><span class="s1">,</span><span class="s6">0</span><span class="s3">px</span><span class="s1">))</span>
-        <span class="s6">16</span><span class="s3">px</span>
-        <span class="s0">calc</span><span class="s1">(</span><span class="s6">24</span><span class="s3">px </span><span class="s1">+ </span><span class="s0">env</span><span class="s1">(</span><span class="s3">safe-area-inset-bottom</span><span class="s1">,</span><span class="s6">0</span><span class="s3">px</span><span class="s1">));</span>
-      <span class="s2">overflow-x</span><span class="s1">:</span><span class="s3">hidden</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">scene</span><span class="s1">{</span>
-      <span class="s2">display</span><span class="s1">:</span><span class="s3">flex</span><span class="s1">;</span>
-      <span class="s2">flex-direction</span><span class="s1">:</span><span class="s3">column</span><span class="s1">;</span>
-      <span class="s2">align-items</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">gap</span><span class="s1">:</span><span class="s6">18</span><span class="s3">px</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">card</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">relative</span><span class="s1">;</span>
-      <span class="s2">width</span><span class="s1">:</span><span class="s0">min</span><span class="s1">(</span><span class="s6">88</span><span class="s3">vw</span><span class="s1">, </span><span class="s6">360</span><span class="s3">px</span><span class="s1">);</span>
-      <span class="s2">aspect-ratio</span><span class="s1">:</span><span class="s6">3</span><span class="s1">/</span><span class="s6">4</span><span class="s1">;</span>
-      <span class="s2">perspective</span><span class="s1">:</span><span class="s6">1400</span><span class="s3">px</span><span class="s1">;</span>
-      <span class="s2">cursor</span><span class="s1">:</span><span class="s3">pointer</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">inside</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">inset</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">border-radius</span><span class="s1">:</span><span class="s6">22</span><span class="s3">px</span><span class="s1">;</span>
-      <span class="s2">background</span><span class="s1">:</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--inside</span><span class="s1">);</span>
-      <span class="s2">box-shadow</span><span class="s1">:</span><span class="s6">0 18</span><span class="s3">px </span><span class="s6">40</span><span class="s3">px </span><span class="s0">rgba</span><span class="s1">(</span><span class="s6">0</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">.25</span><span class="s1">);</span>
-      <span class="s2">display</span><span class="s1">:</span><span class="s3">flex</span><span class="s1">;</span>
-      <span class="s2">flex-direction</span><span class="s1">:</span><span class="s3">column</span><span class="s1">;</span>
-      <span class="s2">align-items</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">justify-content</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">text-align</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">padding</span><span class="s1">:</span><span class="s6">26</span><span class="s3">px </span><span class="s6">20</span><span class="s3">px</span><span class="s1">;</span>
-      <span class="s2">overflow</span><span class="s1">:</span><span class="s3">hidden</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">inside h1</span><span class="s1">{</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">1.5</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">line-height</span><span class="s1">:</span><span class="s6">1.25</span><span class="s1">;</span>
-      <span class="s2">margin</span><span class="s1">:</span><span class="s6">0 0 10</span><span class="s3">px</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">inside p</span><span class="s1">{</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">1</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">line-height</span><span class="s1">:</span><span class="s6">1.5</span><span class="s1">;</span>
-      <span class="s2">margin</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">max-width</span><span class="s1">:</span><span class="s6">26</span><span class="s3">ch</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">emoji-row</span><span class="s1">{</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">1.6</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">margin</span><span class="s1">:</span><span class="s6">14</span><span class="s3">px </span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">letter-spacing</span><span class="s1">:</span><span class="s6">4</span><span class="s3">px</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">door</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">top</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">bottom</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">width</span><span class="s1">:</span><span class="s6">50</span><span class="s1">%;</span>
-      <span class="s2">background</span><span class="s1">:</span>
-        <span class="s0">repeating-linear-gradient</span><span class="s1">(</span><span class="s6">135</span><span class="s3">deg</span><span class="s1">, </span><span class="s0">rgba</span><span class="s1">(</span><span class="s6">255</span><span class="s1">,</span><span class="s6">255</span><span class="s1">,</span><span class="s6">255</span><span class="s1">,</span><span class="s6">.08</span><span class="s1">) </span><span class="s6">0 14</span><span class="s3">px</span><span class="s1">, </span><span class="s3">transparent </span><span class="s6">14</span><span class="s3">px </span><span class="s6">28</span><span class="s3">px</span><span class="s1">),</span>
-        <span class="s0">linear-gradient</span><span class="s1">(</span><span class="s6">200</span><span class="s3">deg</span><span class="s1">,</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--cover1</span><span class="s1">),</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--cover2</span><span class="s1">));</span>
-      <span class="s2">transition</span><span class="s1">:</span><span class="s3">transform </span><span class="s6">.9</span><span class="s3">s </span><span class="s0">cubic-bezier</span><span class="s1">(</span><span class="s6">.4</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">.2</span><span class="s1">,</span><span class="s6">1</span><span class="s1">);</span>
-      <span class="s2">backface-visibility</span><span class="s1">:</span><span class="s3">hidden</span><span class="s1">;</span>
-      <span class="s2">box-shadow</span><span class="s1">:</span><span class="s6">0 18</span><span class="s3">px </span><span class="s6">40</span><span class="s3">px </span><span class="s0">rgba</span><span class="s1">(</span><span class="s6">0</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">.25</span><span class="s1">);</span>
-      <span class="s2">display</span><span class="s1">:</span><span class="s3">flex</span><span class="s1">;</span>
-      <span class="s2">align-items</span><span class="s1">:</span><span class="s3">flex-end</span><span class="s1">;</span>
-      <span class="s2">justify-content</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">overflow</span><span class="s1">:</span><span class="s3">hidden</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">door-left</span><span class="s1">{</span><span class="s2">left</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">transform-origin</span><span class="s1">:</span><span class="s3">left center</span><span class="s1">; </span><span class="s2">border-radius</span><span class="s1">:</span><span class="s6">22</span><span class="s3">px </span><span class="s6">0 0 22</span><span class="s3">px</span><span class="s1">;}</span>
-    <span class="s1">.</span><span class="s0">door-right</span><span class="s1">{</span><span class="s2">right</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">transform-origin</span><span class="s1">:</span><span class="s3">right center</span><span class="s1">; </span><span class="s2">border-radius</span><span class="s1">:</span><span class="s6">0 22</span><span class="s3">px </span><span class="s6">22</span><span class="s3">px </span><span class="s6">0</span><span class="s1">;}</span>
-    <span class="s1">.</span><span class="s0">road</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">left</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">right</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">bottom</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">height</span><span class="s1">:</span><span class="s6">30</span><span class="s1">%;</span>
-      <span class="s2">background</span><span class="s1">:</span><span class="s0">var</span><span class="s1">(</span><span class="s0">--road</span><span class="s1">);</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">road</span><span class="s1">::</span><span class="s0">before</span><span class="s1">{</span>
-      <span class="s2">content</span><span class="s1">:</span><span class="s3">&quot;&quot;</span><span class="s1">;</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">top</span><span class="s1">:</span><span class="s6">50</span><span class="s1">%; </span><span class="s2">left</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">right</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">height</span><span class="s1">:</span><span class="s6">4</span><span class="s3">px</span><span class="s1">;</span>
-      <span class="s2">background</span><span class="s1">:</span><span class="s0">repeating-linear-gradient</span><span class="s1">(</span><span class="s6">90</span><span class="s3">deg</span><span class="s1">,</span><span class="s4">#fff </span><span class="s6">0 16</span><span class="s3">px</span><span class="s1">, </span><span class="s3">transparent </span><span class="s6">16</span><span class="s3">px </span><span class="s6">30</span><span class="s3">px</span><span class="s1">);</span>
-      <span class="s2">transform</span><span class="s1">:</span><span class="s0">translateY</span><span class="s1">(-</span><span class="s6">50</span><span class="s1">%);</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">car</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">bottom</span><span class="s1">:</span><span class="s6">8</span><span class="s1">%;</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">2</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">animation</span><span class="s1">:</span><span class="s3">drive </span><span class="s6">3.2</span><span class="s3">s ease-in-out infinite</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">door-left </span><span class="s1">.</span><span class="s0">car</span><span class="s1">{</span><span class="s2">animation-direction</span><span class="s1">:</span><span class="s3">normal</span><span class="s1">;}</span>
-    <span class="s1">.</span><span class="s0">door-right </span><span class="s1">.</span><span class="s0">car</span><span class="s1">{</span><span class="s2">animation-direction</span><span class="s1">:</span><span class="s3">reverse</span><span class="s1">;}</span>
-    <span class="s5">@keyframes </span><span class="s0">drive</span><span class="s1">{</span>
-      <span class="s0">0%</span><span class="s1">,</span><span class="s0">100%</span><span class="s1">{</span><span class="s2">transform</span><span class="s1">:</span><span class="s0">translateX</span><span class="s1">(-</span><span class="s6">6</span><span class="s3">px</span><span class="s1">);}</span>
-      <span class="s0">50%</span><span class="s1">{</span><span class="s2">transform</span><span class="s1">:</span><span class="s0">translateX</span><span class="s1">(</span><span class="s6">10</span><span class="s3">px</span><span class="s1">);}</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">flowers</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">bottom</span><span class="s1">:</span><span class="s6">30</span><span class="s1">%;</span>
-      <span class="s2">left</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">right</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">1.3</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">display</span><span class="s1">:</span><span class="s3">flex</span><span class="s1">;</span>
-      <span class="s2">justify-content</span><span class="s1">:</span><span class="s3">space-evenly</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">hearts span</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">1.4</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">animation</span><span class="s1">:</span><span class="s3">float </span><span class="s6">4</span><span class="s3">s ease-in-out infinite</span><span class="s1">;</span>
-      <span class="s2">opacity</span><span class="s1">:</span><span class="s6">.9</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s5">@keyframes </span><span class="s0">float</span><span class="s1">{</span>
-      <span class="s0">0%</span><span class="s1">,</span><span class="s0">100%</span><span class="s1">{</span><span class="s2">transform</span><span class="s1">:</span><span class="s0">translateY</span><span class="s1">(</span><span class="s6">0</span><span class="s1">);}</span>
-      <span class="s0">50%</span><span class="s1">{</span><span class="s2">transform</span><span class="s1">:</span><span class="s0">translateY</span><span class="s1">(-</span><span class="s6">14</span><span class="s3">px</span><span class="s1">);}</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">cover-title</span><span class="s1">{</span>
-      <span class="s2">position</span><span class="s1">:</span><span class="s3">absolute</span><span class="s1">;</span>
-      <span class="s2">top</span><span class="s1">:</span><span class="s6">14</span><span class="s1">%;</span>
-      <span class="s2">left</span><span class="s1">:</span><span class="s6">0</span><span class="s1">; </span><span class="s2">right</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">text-align</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-      <span class="s2">color</span><span class="s1">:</span><span class="s4">#fff</span><span class="s1">;</span>
-      <span class="s2">font-weight</span><span class="s1">:</span><span class="s6">700</span><span class="s1">;</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">1.05</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">text-shadow</span><span class="s1">:</span><span class="s6">0 2</span><span class="s3">px </span><span class="s6">6</span><span class="s3">px </span><span class="s0">rgba</span><span class="s1">(</span><span class="s6">0</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">0</span><span class="s1">,</span><span class="s6">.35</span><span class="s1">);</span>
-      <span class="s2">padding</span><span class="s1">:</span><span class="s6">0 8</span><span class="s3">px</span><span class="s1">;</span>
-    <span class="s1">}</span>
-    <span class="s1">.</span><span class="s0">card</span><span class="s1">.</span><span class="s0">open </span><span class="s1">.</span><span class="s0">door-left</span><span class="s1">{</span><span class="s2">transform</span><span class="s1">:</span><span class="s0">rotateY</span><span class="s1">(-</span><span class="s6">112</span><span class="s3">deg</span><span class="s1">);}</span>
-    <span class="s1">.</span><span class="s0">card</span><span class="s1">.</span><span class="s0">open </span><span class="s1">.</span><span class="s0">door-right</span><span class="s1">{</span><span class="s2">transform</span><span class="s1">:</span><span class="s0">rotateY</span><span class="s1">(</span><span class="s6">112</span><span class="s3">deg</span><span class="s1">);}</span>
-    <span class="s1">.</span><span class="s0">hint</span><span class="s1">{</span>
-      <span class="s2">font-size</span><span class="s1">:</span><span class="s6">.95</span><span class="s3">rem</span><span class="s1">;</span>
-      <span class="s2">opacity</span><span class="s1">:</span><span class="s6">.75</span><span class="s1">;</span>
-      <span class="s2">margin</span><span class="s1">:</span><span class="s6">0</span><span class="s1">;</span>
-      <span class="s2">text-align</span><span class="s1">:</span><span class="s3">center</span><span class="s1">;</span>
-    <span class="s1">}</span>
-  <span class="s0">&lt;/style&gt;</span>
-<span class="s0">&lt;/head&gt;</span>
-<span class="s0">&lt;body&gt;</span>
-<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;scene&quot;</span><span class="s0">&gt;</span>
-  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card&quot; </span><span class="s2">id</span><span class="s3">=&quot;card&quot; </span><span class="s2">role</span><span class="s3">=&quot;button&quot; </span><span class="s2">aria-label</span><span class="s3">=&quot;Открыть открытку&quot; </span><span class="s2">tabindex</span><span class="s3">=&quot;0&quot;</span><span class="s0">&gt;</span>
-    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;inside&quot;</span><span class="s0">&gt;</span>
-      <span class="s0">&lt;h1&gt;</span><span class="s1">С Днём Рождения,</span><span class="s0">&lt;br&gt;</span><span class="s1">Захар! 🎉</span><span class="s0">&lt;/h1&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;emoji-row&quot;</span><span class="s0">&gt;</span><span class="s1">🚗🌷❤️🌼💙🌻</span><span class="s0">&lt;/div&gt;</span>
-      <span class="s0">&lt;p&gt;</span><span class="s1">Пусть этот год будет быстрым, как гоночная машина, ярким, как весенний букет, и тёплым, как самые добрые объятия. Поздравляем!</span><span class="s0">&lt;/p&gt;</span>
-    <span class="s0">&lt;/div&gt;</span>
+<body>
+  <div class="scene">
+    <div class="card" id="card" role="button" aria-label="Открыть открытку" tabindex="0">
+      <div class="inside">
+        <h1>С Днём Рождения,<br>Захар! 🎉</h1>
+        <div class="emoji-row">🚗🌷❤️🌼💙🌻</div>
+        <p>Пусть этот год будет быстрым, как гоночная машина, ярким, как весенний букет, и тёплым, как самые добрые объятия. Поздравляем!</p>
+      </div>
 
-    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;door door-left&quot;</span><span class="s0">&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;cover-title&quot;</span><span class="s0">&gt;</span><span class="s1">С Днём</span><span class="s0">&lt;br&gt;</span><span class="s1">Рождения!</span><span class="s0">&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hearts&quot;</span><span class="s0">&gt;</span>
-        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">20</span><span class="s1">%; </span><span class="s2">top</span><span class="s1">:</span><span class="s6">28</span><span class="s1">%; </span><span class="s2">animation-delay</span><span class="s1">:</span><span class="s6">.2</span><span class="s3">s</span><span class="s1">;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">❤️</span><span class="s0">&lt;/span&gt;</span>
-        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">60</span><span class="s1">%; </span><span class="s2">top</span><span class="s1">:</span><span class="s6">18</span><span class="s1">%; </span><span class="s2">animation-delay</span><span class="s1">:</span><span class="s6">1</span><span class="s3">s</span><span class="s1">;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">💙</span><span class="s0">&lt;/span&gt;</span>
-        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">40</span><span class="s1">%; </span><span class="s2">top</span><span class="s1">:</span><span class="s6">45</span><span class="s1">%; </span><span class="s2">animation-delay</span><span class="s1">:</span><span class="s6">.6</span><span class="s3">s</span><span class="s1">;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">💛</span><span class="s0">&lt;/span&gt;</span>
-      <span class="s0">&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;flowers&quot;</span><span class="s0">&gt;&lt;span&gt;</span><span class="s1">🌸</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">🌷</span><span class="s0">&lt;/span&gt;&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;road&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;car&quot; </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">18</span><span class="s1">%;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">🚗</span><span class="s0">&lt;/div&gt;</span>
-    <span class="s0">&lt;/div&gt;</span>
+      <div class="door door-left">
+        <div class="cover-title">С Днём<br>Рождения!</div>
+        <div class="hearts">
+          <span style="left:20%; top:28%; animation-delay:.2s;">❤️</span>
+          <span style="left:60%; top:18%; animation-delay:1s;">💙</span>
+          <span style="left:40%; top:45%; animation-delay:.6s;">💛</span>
+        </div>
+        <div class="flowers"><span>🌸</span><span>🌷</span></div>
+        <div class="road"></div>
+        <div class="car" style="left:18%;">🚗</div>
+      </div>
 
-    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;door door-right&quot;</span><span class="s0">&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hearts&quot;</span><span class="s0">&gt;</span>
-        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">30</span><span class="s1">%; </span><span class="s2">top</span><span class="s1">:</span><span class="s6">22</span><span class="s1">%; </span><span class="s2">animation-delay</span><span class="s1">:</span><span class="s6">.4</span><span class="s3">s</span><span class="s1">;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">💚</span><span class="s0">&lt;/span&gt;</span>
-        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">55</span><span class="s1">%; </span><span class="s2">top</span><span class="s1">:</span><span class="s6">40</span><span class="s1">%; </span><span class="s2">animation-delay</span><span class="s1">:</span><span class="s6">1.2</span><span class="s3">s</span><span class="s1">;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">❤️</span><span class="s0">&lt;/span&gt;</span>
-      <span class="s0">&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;flowers&quot;</span><span class="s0">&gt;&lt;span&gt;</span><span class="s1">🌼</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">🌻</span><span class="s0">&lt;/span&gt;&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;road&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
-      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;car&quot; </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">left</span><span class="s1">:</span><span class="s6">55</span><span class="s1">%;</span><span class="s3">&quot;</span><span class="s0">&gt;</span><span class="s1">🚙</span><span class="s0">&lt;/div&gt;</span>
-    <span class="s0">&lt;/div&gt;</span>
-  <span class="s0">&lt;/div&gt;</span>
-  <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;hint&quot; </span><span class="s2">id</span><span class="s3">=&quot;hint&quot;</span><span class="s0">&gt;</span><span class="s1">Нажми на открытку, чтобы открыть 👆</span><span class="s0">&lt;/p&gt;</span>
-<span class="s0">&lt;/div&gt;</span>
+      <div class="door door-right">
+        <div class="hearts">
+          <span style="left:30%; top:22%; animation-delay:.4s;">💚</span>
+          <span style="left:55%; top:40%; animation-delay:1.2s;">❤️</span>
+        </div>
+        <div class="flowers"><span>🌼</span><span>🌻</span></div>
+        <div class="road"></div>
+        <div class="car" style="left:55%;">🚙</div>
+      </div>
+    </div>
+    <p class="hint" id="hint">Нажми на открытку, чтобы открыть 👆</p>
+  </div>
 
-<span class="s0">&lt;script&gt;</span>
-  <span class="s5">const </span><span class="s1">card = document.getElementById(</span><span class="s3">'card'</span><span class="s1">);</span>
-  <span class="s5">const </span><span class="s1">hint = document.getElementById(</span><span class="s3">'hint'</span><span class="s1">);</span>
-  <span class="s5">function </span><span class="s1">toggle(){</span>
-    <span class="s5">const </span><span class="s1">open = card.classList.toggle(</span><span class="s3">'open'</span><span class="s1">);</span>
-    <span class="s1">hint.textContent = open ? </span><span class="s3">'Нажми ещё раз, чтобы закрыть 👆' </span><span class="s1">: </span><span class="s3">'Нажми на открытку, чтобы открыть 👆'</span><span class="s1">;</span>
-  <span class="s1">}</span>
-  <span class="s1">card.addEventListener(</span><span class="s3">'click'</span><span class="s1">, toggle);</span>
-  <span class="s1">card.addEventListener(</span><span class="s3">'keydown'</span><span class="s1">, e =&gt; {</span>
-    <span class="s5">if</span><span class="s1">(e.key === </span><span class="s3">'Enter' </span><span class="s1">|| e.key === </span><span class="s3">' '</span><span class="s1">){ e.preventDefault(); toggle(); }</span>
-  <span class="s1">});</span>
-<span class="s0">&lt;/script&gt;</span>
-<span class="s0">&lt;/body&gt;</span>
-<span class="s0">&lt;/html&gt;</span>
-</pre>
+  <script>
+    const card = document.getElementById('card');
+    const hint = document.getElementById('hint');
+    function toggle(){
+      const open = card.classList.toggle('open');
+      hint.textContent = open ? 'Нажми ещё раз, чтобы закрыть 👆' : 'Нажми на открытку, чтобы открыть 👆';
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  </script>
 </body>
 </html>
