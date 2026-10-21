@@ -1,218 +1,218 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>С Днём Рождения, Захар!</title>
-<style>
-  :root{
-    --bg1:#FFE9A8;
-    --bg2:#FFB7C5;
-    --road:#2E4057;
-    --cover1:#3E8EDE;
-    --cover2:#1B2A4A;
-    --inside:#FFF9F0;
-    --ink:#1B2A4A;
-    --accent:#FF6F91;
-    --leaf:#4FAE6B;
-    color-scheme: light dark;
-  }
-  @media (prefers-color-scheme: dark){
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>С Днём Рождения, Захар!</title>
+  <style>
     :root{
-      --bg1:#2a2140;
-      --bg2:#4a2a46;
-      --inside:#22201c;
-      --ink:#FFF4E6;
+      --bg1:#FFE9A8;
+      --bg2:#FFB7C5;
+      --road:#2E4057;
+      --cover1:#3E8EDE;
+      --cover2:#1B2A4A;
+      --inside:#FFF9F0;
+      --ink:#1B2A4A;
+      --accent:#FF6F91;
+      --leaf:#4FAE6B;
+      color-scheme: light dark;
     }
-  }
-  *{box-sizing:border-box;}
-  html,body{height:100%;}
-  body{
-    margin:0;
-    min-height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(160deg,var(--bg1),var(--bg2));
-    font-family: ui-rounded, "Segoe UI Rounded", system-ui, -apple-system, sans-serif;
-    color:var(--ink);
-    padding:
-      calc(24px + env(safe-area-inset-top,0px))
-      16px
-      calc(24px + env(safe-area-inset-bottom,0px));
-    overflow-x:hidden;
-  }
-  .scene{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:18px;
-  }
-  .card{
-    position:relative;
-    width:min(88vw, 360px);
-    aspect-ratio:3/4;
-    perspective:1400px;
-    cursor:pointer;
-  }
-  .inside{
-    position:absolute;
-    inset:0;
-    border-radius:22px;
-    background:var(--inside);
-    box-shadow:0 18px 40px rgba(0,0,0,.25);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:26px 20px;
-    overflow:hidden;
-  }
-  .inside h1{
-    font-size:1.5rem;
-    line-height:1.25;
-    margin:0 0 10px;
-  }
-  .inside p{
-    font-size:1rem;
-    line-height:1.5;
-    margin:0;
-    max-width:26ch;
-  }
-  .emoji-row{
-    font-size:1.6rem;
-    margin:14px 0;
-    letter-spacing:4px;
-  }
-  .door{
-    position:absolute;
-    top:0;
-    bottom:0;
-    width:50%;
-    background:
-      repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 14px, transparent 14px 28px),
-      linear-gradient(200deg,var(--cover1),var(--cover2));
-    transition:transform .9s cubic-bezier(.4,0,.2,1);
-    backface-visibility:hidden;
-    box-shadow:0 18px 40px rgba(0,0,0,.25);
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    overflow:hidden;
-  }
-  .door-left{left:0; transform-origin:left center; border-radius:22px 0 0 22px;}
-  .door-right{right:0; transform-origin:right center; border-radius:0 22px 22px 0;}
-  .road{
-    position:absolute;
-    left:0; right:0; bottom:0;
-    height:30%;
-    background:var(--road);
-  }
-  .road::before{
-    content:"";
-    position:absolute;
-    top:50%; left:0; right:0;
-    height:4px;
-    background:repeating-linear-gradient(90deg,#fff 0 16px, transparent 16px 30px);
-    transform:translateY(-50%);
-  }
-  .car{
-    position:absolute;
-    bottom:8%;
-    font-size:2rem;
-    animation:drive 3.2s ease-in-out infinite;
-  }
-  .door-left .car{animation-direction:normal;}
-  .door-right .car{animation-direction:reverse;}
-  @keyframes drive{
-    0%,100%{transform:translateX(-6px);}
-    50%{transform:translateX(10px);}
-  }
-  .flowers{
-    position:absolute;
-    bottom:30%;
-    left:0; right:0;
-    font-size:1.3rem;
-    display:flex;
-    justify-content:space-evenly;
-  }
-  .hearts span{
-    position:absolute;
-    font-size:1.4rem;
-    animation:float 4s ease-in-out infinite;
-    opacity:.9;
-  }
-  @keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-14px);}
-  }
-  .cover-title{
-    position:absolute;
-    top:14%;
-    left:0; right:0;
-    text-align:center;
-    color:#fff;
-    font-weight:700;
-    font-size:1.05rem;
-    text-shadow:0 2px 6px rgba(0,0,0,.35);
-    padding:0 8px;
-  }
-  .card.open .door-left{transform:rotateY(-112deg);}
-  .card.open .door-right{transform:rotateY(112deg);}
-  .hint{
-    font-size:.95rem;
-    opacity:.75;
-    margin:0;
-    text-align:center;
-  }
-</style>
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg1:#2a2140;
+        --bg2:#4a2a46;
+        --inside:#22201c;
+        --ink:#FFF4E6;
+      }
+    }
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(160deg,var(--bg1),var(--bg2));
+      font-family: ui-rounded, "Segoe UI Rounded", system-ui, -apple-system, sans-serif;
+      color:var(--ink);
+      padding:
+        calc(24px + env(safe-area-inset-top,0px))
+        16px
+        calc(24px + env(safe-area-inset-bottom,0px));
+      overflow-x:hidden;
+    }
+    .scene{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+    .card{
+      position:relative;
+      width:min(88vw, 360px);
+      aspect-ratio:3/4;
+      perspective:1400px;
+      cursor:pointer;
+    }
+    .inside{
+      position:absolute;
+      inset:0;
+      border-radius:22px;
+      background:var(--inside);
+      box-shadow:0 18px 40px rgba(0,0,0,.25);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:26px 20px;
+      overflow:hidden;
+    }
+    .inside h1{
+      font-size:1.5rem;
+      line-height:1.25;
+      margin:0 0 10px;
+    }
+    .inside p{
+      font-size:1rem;
+      line-height:1.5;
+      margin:0;
+      max-width:26ch;
+    }
+    .emoji-row{
+      font-size:1.6rem;
+      margin:14px 0;
+      letter-spacing:4px;
+    }
+    .door{
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:50%;
+      background:
+        repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 14px, transparent 14px 28px),
+        linear-gradient(200deg,var(--cover1),var(--cover2));
+      transition:transform .9s cubic-bezier(.4,0,.2,1);
+      backface-visibility:hidden;
+      box-shadow:0 18px 40px rgba(0,0,0,.25);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .door-left{left:0; transform-origin:left center; border-radius:22px 0 0 22px;}
+    .door-right{right:0; transform-origin:right center; border-radius:0 22px 22px 0;}
+    .road{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:30%;
+      background:var(--road);
+    }
+    .road::before{
+      content:"";
+      position:absolute;
+      top:50%; left:0; right:0;
+      height:4px;
+      background:repeating-linear-gradient(90deg,#fff 0 16px, transparent 16px 30px);
+      transform:translateY(-50%);
+    }
+    .car{
+      position:absolute;
+      bottom:8%;
+      font-size:2rem;
+      animation:drive 3.2s ease-in-out infinite;
+    }
+    .door-left .car{animation-direction:normal;}
+    .door-right .car{animation-direction:reverse;}
+    @keyframes drive{
+      0%,100%{transform:translateX(-6px);}
+      50%{transform:translateX(10px);}
+    }
+    .flowers{
+      position:absolute;
+      bottom:30%;
+      left:0; right:0;
+      font-size:1.3rem;
+      display:flex;
+      justify-content:space-evenly;
+    }
+    .hearts span{
+      position:absolute;
+      font-size:1.4rem;
+      animation:float 4s ease-in-out infinite;
+      opacity:.9;
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-14px);}
+    }
+    .cover-title{
+      position:absolute;
+      top:14%;
+      left:0; right:0;
+      text-align:center;
+      color:#fff;
+      font-weight:700;
+      font-size:1.05rem;
+      text-shadow:0 2px 6px rgba(0,0,0,.35);
+      padding:0 8px;
+    }
+    .card.open .door-left{transform:rotateY(-112deg);}
+    .card.open .door-right{transform:rotateY(112deg);}
+    .hint{
+      font-size:.95rem;
+      opacity:.75;
+      margin:0;
+      text-align:center;
+    }
+  </style>
 </head>
 <body>
-  <div class="scene">
-    <div class="card" id="card" role="button" aria-label="Открыть открытку" tabindex="0">
-      <div class="inside">
-        <h1>С Днём Рождения,<br>Захар! 🎉</h1>
-        <div class="emoji-row">🚗🌷❤️🌼💙🌻</div>
-        <p>Пусть этот год будет быстрым, как гоночная машина, ярким, как весенний букет, и тёплым, как самые добрые объятия. Поздравляем!</p>
-      </div>
-
-      <div class="door door-left">
-        <div class="cover-title">С Днём<br>Рождения!</div>
-        <div class="hearts">
-          <span style="left:20%; top:28%; animation-delay:.2s;">❤️</span>
-          <span style="left:60%; top:18%; animation-delay:1s;">💙</span>
-          <span style="left:40%; top:45%; animation-delay:.6s;">💛</span>
-        </div>
-        <div class="flowers"><span>🌸</span><span>🌷</span></div>
-        <div class="road"></div>
-        <div class="car" style="left:18%;">🚗</div>
-      </div>
-
-      <div class="door door-right">
-        <div class="hearts">
-          <span style="left:30%; top:22%; animation-delay:.4s;">💚</span>
-          <span style="left:55%; top:40%; animation-delay:1.2s;">❤️</span>
-        </div>
-        <div class="flowers"><span>🌼</span><span>🌻</span></div>
-        <div class="road"></div>
-        <div class="car" style="left:55%;">🚙</div>
-      </div>
+<div class="scene">
+  <div class="card" id="card" role="button" aria-label="Открыть открытку" tabindex="0">
+    <div class="inside">
+      <h1>С Днём Рождения,<br>Захар! 🎉</h1>
+      <div class="emoji-row">🚗🌷❤️🌼💙🌻</div>
+      <p>Пусть этот год будет быстрым, как гоночная машина, ярким, как весенний букет, и тёплым, как самые добрые объятия. Поздравляем!</p>
     </div>
-    <p class="hint" id="hint">Нажми на открытку, чтобы открыть 👆</p>
-  </div>
 
-  <script>
-    const card = document.getElementById('card');
-    const hint = document.getElementById('hint');
-    function toggle(){
-      const open = card.classList.toggle('open');
-      hint.textContent = open ? 'Нажми ещё раз, чтобы закрыть 👆' : 'Нажми на открытку, чтобы открыть 👆';
-    }
-    card.addEventListener('click', toggle);
-    card.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
-    });
-  </script>
+    <div class="door door-left">
+      <div class="cover-title">С Днём<br>Рождения!</div>
+      <div class="hearts">
+        <span style="left:20%; top:28%; animation-delay:.2s;">❤️</span>
+        <span style="left:60%; top:18%; animation-delay:1s;">💙</span>
+        <span style="left:40%; top:45%; animation-delay:.6s;">💛</span>
+      </div>
+      <div class="flowers"><span>🌸</span><span>🌷</span></div>
+      <div class="road"></div>
+      <div class="car" style="left:18%;">🚗</div>
+    </div>
+
+    <div class="door door-right">
+      <div class="hearts">
+        <span style="left:30%; top:22%; animation-delay:.4s;">💚</span>
+        <span style="left:55%; top:40%; animation-delay:1.2s;">❤️</span>
+      </div>
+      <div class="flowers"><span>🌼</span><span>🌻</span></div>
+      <div class="road"></div>
+      <div class="car" style="left:55%;">🚙</div>
+    </div>
+  </div>
+  <p class="hint" id="hint">Нажми на открытку, чтобы открыть 👆</p>
+</div>
+
+<script>
+  const card = document.getElementById('card');
+  const hint = document.getElementById('hint');
+  function toggle(){
+    const open = card.classList.toggle('open');
+    hint.textContent = open ? 'Нажми ещё раз, чтобы закрыть 👆' : 'Нажми на открытку, чтобы открыть 👆';
+  }
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+  });
+</script>
 </body>
 </html>
